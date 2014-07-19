@@ -163,9 +163,9 @@ defmodule Mongo.Server do
     end
   end
 
-  # makes shure response is complete
-  defp complete(expected_length, buffer, _mongo) when size(buffer) == expected_length, do: buffer
-  defp complete(expected_length, buffer, _mongo) when size(buffer) >  expected_length, do: binary_part(buffer, 0, expected_length)
+  # makes sure response is complete
+  defp complete(expected_length, buffer, _mongo) when byte_size(buffer) == expected_length, do: buffer
+  defp complete(expected_length, buffer, _mongo) when byte_size(buffer) >  expected_length, do: binary_part(buffer, 0, expected_length)
   defp complete(expected_length, buffer, mongo) do
     case tcp_recv(mongo) do
       {:ok, mess} -> complete(expected_length, buffer <> mess, mongo)
