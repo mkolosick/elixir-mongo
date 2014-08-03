@@ -5,8 +5,8 @@ defmodule Mongo.Mixfile do
     [ app: :mongo,
       name: "mongo",
       version: "0.3.0",
-      elixir: "~> 0.14.2",
-      source_url: "https://github.com/checkiz/elixir-mongo",
+      elixir: "~> 0.15.0",
+      source_url: "https://github.com/mkolosick/elixir-mongo",
       deps: deps(Mix.env),
       docs: &docs/0 ]
   end
@@ -36,7 +36,7 @@ defmodule Mongo.Mixfile do
   defp docs do
     [ #readme: false,
       #main: "README",
-      source_ref: System.cmd("git rev-parse --verify --quiet HEAD") ]
+      source_ref: System.cmd("git", ["rev-parse", "--verify", "--quiet", "HEAD"]) ]
   end
 
 end
