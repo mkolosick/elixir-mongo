@@ -66,11 +66,6 @@ db.auth("testuser", "123")`
 db.getLastError
 ```
 
-### Documentation
-
-- [documentation](http://checkiz.github.io/elixir-mongo)
-
 ### Dependencies
 
-- MongoDB needs a Bson encoder/decoder, this project uses the elixir-bson encoder/decoder. See [elixir-bson source repo](https://github.com/checkiz/elixir-bson) and its 
-[documentation](http://checkiz.github.io/elixir-bson)
+- MongoDB needs a Bson encoder/decoder, this project uses the elixir-bson encoder/decoder. See [elixir-bson source repo](https://github.com/mkolosick/elixir-bson)
