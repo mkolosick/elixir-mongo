@@ -86,7 +86,7 @@ defmodule Mongo.Server do
   """
   def response(mongo) do
     case tcp_recv(mongo) do
-      {:ok, <<messageLength::[little, signed, size(32)], _::binary>> = message} ->
+      {:ok, <<messageLength::size(32)-signed-little, _::binary>> = message} ->
         complete(messageLength, message, mongo) |> Mongo.Response.new
       error -> error
     end
@@ -96,7 +96,7 @@ defmodule Mongo.Server do
   Completes a possibly partial repsonce from the MongoDB server
   """
   def response(
-    <<messageLength::[little, signed, size(32)], _::binary>> = message,
+    <<messageLength::size(32)-signed-little, _::binary>> = message,
     mongo) do
     complete(messageLength, message, mongo) |> Mongo.Response.new
   end
